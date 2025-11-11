@@ -20,8 +20,8 @@
     ],
     "env": {
         "APP_ENV": "production",
-        "APP_DEBUG": "true",
-        "APP_URL": "",
+        "APP_DEBUG": "false",
+        "APP_URL": "https://computer-online-shop.vercel.app",
  
         "APP_CONFIG_CACHE": "/tmp/config.php",
         "APP_EVENTS_CACHE": "/tmp/events.php",
@@ -32,6 +32,8 @@
  
         "CACHE_DRIVER": "array",
         "LOG_CHANNEL": "stderr",
-        "SESSION_DRIVER": "cookie"
+        "SESSION_DRIVER": "cookie",
+
+        "SESSION_DOMAIN": "computer-online-shop.vercel.app"
     }
 }

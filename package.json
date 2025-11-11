@@ -2,7 +2,7 @@
     "private": true,
     "type": "module",
     "scripts": {
-        "build": "composer install --no-dev --optimize-autoloader && vite build",
+        "build": "composer install --no-dev --optimize-autoloader && php artisan config:cache && vite build",
         "dev": "vite"
     },
     "devDependencies": {
