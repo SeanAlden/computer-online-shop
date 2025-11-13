@@ -1,7 +1,3 @@
-@php
-    use Illuminate\Support\Facades\Storage;
-@endphp
-
 @extends('layouts.app')
 
 @section('content')
@@ -41,21 +37,13 @@
                                     @foreach ($products as $product)
                                         <tr class="my-9 border-t border-gray-200 hover:bg-gray-50 dark:hover:bg-gray-700">
                                             <td class="px-4 py-3">
-                                                {{-- @if ($product->photo)
+                                                @if ($product->photo)
                                                 <img src="{{ asset('storage/' . $product->photo) }}"
                                                     alt="{{ $product->product_name }}"
                                                     class="h-16 w-16 rounded-md object-cover">
                                                 @else
                                                 <img src="{{ URL::asset('img/avatar.png') }}" alt="No Image"
                                                     class="h-16 w-16 rounded-md object-cover">
-                                                @endif --}}
-                                                @if ($product->photo)
-                                                    <img src="{{ Storage::disk('s3')->url($product->photo) }}"
-                                                        alt="{{ $product->product_name }}"
-                                                        class="h-16 w-16 rounded-md object-cover">
-                                                @else
-                                                    <img src="{{ URL::asset('img/avatar.png') }}" alt="No Image"
-                                                        class="h-16 w-16 rounded-md object-cover">
                                                 @endif
                                             </td>
                                             <td class="px-4 py-3 text-gray-800 dark:text-gray-100">

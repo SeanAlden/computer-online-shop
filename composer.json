@@ -12,7 +12,6 @@
         "laravel/framework": "^11.31",
         "laravel/sanctum": "^4.0",
         "laravel/tinker": "^2.9",
-        "league/flysystem-aws-s3-v3": "^3.30",
         "maatwebsite/excel": "*",
         "midtrans/midtrans-php": "^2.6",
         "mpdf/mpdf": "*"

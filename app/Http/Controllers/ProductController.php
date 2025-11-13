@@ -20,34 +20,6 @@ class ProductController extends Controller
         return view('admin.product', compact('products', 'categories'));
     }
 
-    // public function store(Request $request)
-    // {
-    //     $validated = $request->validate([
-    //         'photo' => 'nullable|mimes:png,jpeg,jpg|max:2048',
-    //         'product_name' => 'required|string|unique:products,product_name',
-    //         'description' => 'required|string',
-    //         'brand' => 'required|string',
-    //         'cpu' => 'required|string',
-    //         'gpu' => 'required|string',
-    //         'memory' => 'required|string',
-    //         'storage' => 'required|string',
-    //         'stock' => 'required|integer',
-    //         'price' => 'required|numeric',
-    //         'category_id' => 'required',
-    //     ], [
-    //         'product_name.unique' => 'Product name has been used',
-    //     ]);
-
-    //     if ($request->hasFile('photo')) {
-    //         $photoPath = $request->file('photo')->store('photos', 'public');
-    //         $validated['photo'] = $photoPath;
-    //     }
-
-    //     Product::create($validated);
-
-    //     return redirect()->back()->with('success', 'Product added successfully');
-    // }
-
     public function store(Request $request)
     {
         $validated = $request->validate([
@@ -62,18 +34,46 @@ class ProductController extends Controller
             'stock' => 'required|integer',
             'price' => 'required|numeric',
             'category_id' => 'required',
+        ], [
+            'product_name.unique' => 'Product name has been used',
         ]);
 
         if ($request->hasFile('photo')) {
-            // simpan langsung ke S3
-            $path = $request->file('photo')->store('photos', 's3');
-            $validated['photo'] = $path;
+            $photoPath = $request->file('photo')->store('photos', 'public');
+            $validated['photo'] = $photoPath;
         }
 
         Product::create($validated);
 
         return redirect()->back()->with('success', 'Product added successfully');
     }
+
+    // public function store(Request $request)
+    // {
+    //     $validated = $request->validate([
+    //         'photo' => 'nullable|mimes:png,jpeg,jpg|max:2048',
+    //         'product_name' => 'required|string|unique:products,product_name',
+    //         'description' => 'required|string',
+    //         'brand' => 'required|string',
+    //         'cpu' => 'required|string',
+    //         'gpu' => 'required|string',
+    //         'memory' => 'required|string',
+    //         'storage' => 'required|string',
+    //         'stock' => 'required|integer',
+    //         'price' => 'required|numeric',
+    //         'category_id' => 'required',
+    //     ]);
+
+    //     if ($request->hasFile('photo')) {
+    //         // simpan langsung ke S3
+    //         $path = $request->file('photo')->store('photos', 's3');
+    //         $validated['photo'] = $path;
+    //     }
+
+    //     Product::create($validated);
+
+    //     return redirect()->back()->with('success', 'Product added successfully');
+    // }
 
 
     // public function update(Request $request, Product $product)
