@@ -2,8 +2,7 @@
     "version": 2,
       "framework": null,
     "functions": {
-        "api/index.php": { "runtime": "vercel-php@0.7.4" },
-        "excludeFiles": "{storage/**,node_modules/**,tests/**,resources/**,database/**,public/storage/**}"
+        "api/index.php": { "runtime": "vercel-php@0.7.4" }
     },
     "routes": [
         {
